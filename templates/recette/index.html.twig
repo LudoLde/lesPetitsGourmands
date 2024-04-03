@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les Petits Gourmands - Recettes{% endblock %}
+
+{% block body %}
+
+<div class="container mt-5">
+    <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nom Recette</th>
+      <th scope="col">Durée</th>
+      <th scope="col">Difficulté</th>
+      <th scope="col">Description</th>
+       <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for recette in recettes %}
+    <tr class="table-primary">
+      <td>{{recette.id}}</td>
+      <td>{{recette.nom | capitalize}}</td>
+      <td>{{recette.duree}} min</td>
+      <td>{{recette.difficulte}}</td>
+      <td>{{recette.description}}</td>
+      <td> <a href="{{ path('recette.modifier', {id: recette.id})}}" class="btn btn-primary">Modifier</a></td>
+      <td> <a href="{{ path('recette.supprimer', {id: recette.id})}}" class="btn btn-outline-danger">Supprimer</a></td>
+    </tr>
+  {% endfor %}  
+  </tbody>
+</table>
+    <div class="d-flex justify-content-center navigation mt-4">
+        {{ knp_pagination_render(recettes) }}
+    </div>
+</div>
+{% endblock %}
+
