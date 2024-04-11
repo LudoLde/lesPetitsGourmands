@@ -30,9 +30,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\NotBlank()]
     private ?string $nom = null;
 
+    #[ORM\Column(length: 40)]
+    #[Assert\Length(min: 2, max: 40, minMessage: 'Le pseudo contenir entre 2 et 40 caractères', maxMessage: 'Le pseudo doit contenir entre 2 et 40 caractères')]
+    private ?string $username;
+
     #[ORM\Column(length: 180)]
     #[Assert\NotBlank()]
-    private ?string $email = null;
+    #[Assert\Email()]
+    private ?string $email;
 
     /**
      * @var list<string> The user roles
@@ -73,6 +78,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setNom(string $nom): static
     {
         $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getUsername(): ?string
+    {
+        return $this->username;
+    }
+
+    public function setUsername(string $username): static
+    {
+        $this->username = $username;
 
         return $this;
     }

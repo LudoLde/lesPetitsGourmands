@@ -12,11 +12,7 @@ class SecurityController extends AbstractController
 {
     #[Route('/security/connexion', name: 'security.login', methods:['GET', 'POST'])]
     public function connexion(AuthenticationUtils $authenticationUtils, Request $request): Response
-    {       
-        $email = $request->request->get('_username');
-
-        // Vérifier si l'email est récupéré correctement
-        dump($email);
+    {   
 
             return $this->render('security/login.html.twig', [
              'last_username' => $authenticationUtils->getLastUsername(),
