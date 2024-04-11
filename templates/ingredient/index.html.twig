@@ -20,7 +20,11 @@
     <tr class="table-primary">
       <td>{{ingredient.id}}</td>
       <td>{{ingredient.nom | capitalize}}</td>
-      <td>{{ingredient.type}}</td>
+      {% if ingredient.type == "--" %}
+        <td>Non renseigné</td>
+        {% else %}
+        <td>{{ingredient.type}}</td>
+      {% endif %}  
       <td> <a href="{{ path('ingredient.modifier', {id: ingredient.id})}}" class="btn btn-primary">Modifier</a></td>
       <td> <a href="{{ path('ingredient.supprimer', {id: ingredient.id})}}" class="btn btn-outline-danger">Supprimer</a></td>
     </tr>

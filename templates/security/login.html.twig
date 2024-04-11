@@ -5,18 +5,17 @@
         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
     
-<form action="{{ path('security.login') }}" method="POST" class="d-flex justify-content-center align-items-center mt-5">
+<form action="{{ path('security.login') }}" method="post" class="d-flex justify-content-center align-items-center mt-5">
   <fieldset>
     <div class="row">
     </div>
     <div>
-      <label for="email" class="form-label mt-4">Adresse Email</label>
-      <input type="email" class="form-control" id="email" placeholder="exemple@petitsgourmands.fr" name:"_username">
-      
+      <label for="username" class="form-label mt-4">Adresse Email</label>
+      <input type="email" class="form-control" id="username" placeholder="exemple@petitsgourmands.fr" name="_username"> 
     </div>
     <div>
       <label for="password" class="form-label mt-4">Mot de passe:</label>
-      <input type="password" class="form-control" id="password" placeholder="********" autocomplete="off" name:"_password">
+      <input type="password" class="form-control" id="password" placeholder="********" autocomplete="off" name="_password">
       <small id="passwordHelp" class="form-text text-muted">Ne partagez jamais votre mot de passe !</small>
     </div>
   </fieldset>
